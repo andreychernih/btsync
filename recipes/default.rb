@@ -47,7 +47,7 @@ if node['btsync'].has_key?('shared_folders')
     node['btsync']['shared_folders'].each do |name,sf|
       if node['btsync'].has_key?('known_hosts')
         myfolder = {"name"=>name,"secret"=>sf['secret'],'dir'=>sf['dir'],'sync_servers'=>node['btsync']['known_hosts']}
-        my_shared_folders << myfolder
+        my_shared_folders << node['btsync']['shared_folder_options'].merge(myfolder)
       end
     end
   else
