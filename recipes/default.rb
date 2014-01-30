@@ -46,7 +46,7 @@ if node['btsync'].has_key?('shared_folders')
     Chef::Log.warn("This recipe uses search. Chef Solo does not support search.")
     node['btsync']['shared_folders'].each do |name,sf|
       if node['btsync'].has_key?('known_hosts')
-        myfolder = {"name"=>name,"secret"=>sf['secret'],'dir'=>sf['path'],'sync_servers'=>node['btsync']['known_hosts']}
+        myfolder = {"name"=>name,"secret"=>sf['secret'],'dir'=>sf['dir'],'sync_servers'=>node['btsync']['known_hosts']}
         my_shared_folders << myfolder
       end
     end
